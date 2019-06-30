@@ -1,0 +1,124 @@
+﻿<Window x:Class="TaskPlanningApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskPlanningApp"
+        mc:Ignorable="d"
+        x:Name="AppMainWindow"
+        Title="MainWindow" Height="400" Width="800"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+
+    </Window.Resources>
+    
+    
+    <Grid>
+        <Border Height="80" VerticalAlignment="Top"
+                Background="#FF3B5477">
+        </Border>
+        <StackPanel>
+           
+                <Border Height="20"
+                        Background="#FFDCDCDC"
+                        MouseDown="TitleBar_MouseDown">
+                <DockPanel>
+                    <Button DockPanel.Dock="Right"
+                        Style="{DynamicResource TitleBarButton}" 
+                            Content="X"
+                            Foreground="#FF3B5477"
+                            Name="CloseAppButton"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Width="16" Height="16"
+                            Margin="0,0,3,0" FontFamily="Arial Black"
+                            Command="{Binding CloseCommand, Mode=OneWay}"
+                            CommandParameter="{Binding ElementName=AppMainWindow}">
+
+                    </Button>
+
+                    <Button DockPanel.Dock="Right"
+                        Style="{DynamicResource TitleBarButton}" 
+                            Content="_"
+                            Foreground="#FF3B5477"
+                            Name="MinimizeAppButton"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                            Width="16" Height="16"
+                            Margin="0,0,3,0" FontFamily="Arial Black">
+
+                    </Button>
+                    
+                </DockPanel>  
+                </Border>
+                
+                
+            
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical" Width="650">
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Imię:" 
+                           Width="90"
+                           FontFamily="Corbel"
+                           FontSize="18"
+                           Foreground="AntiqueWhite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,0,0,0"/>
+                        <TextBlock Name="NameTextField" 
+                           Width="150"
+                           FontFamily="Corbel"
+                           FontSize="18"
+                           Foreground="AntiqueWhite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"/>
+                        <TextBlock Text="Aktywne zadania:"
+                           Width="155"
+                           FontFamily="Corbel"
+                           FontSize="18"
+                           Foreground="AntiqueWhite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,0,0,0"/>
+                    </StackPanel>
+                    <StackPanel Height="30" Orientation="Horizontal">
+                        <TextBlock Text="Nazwisko:" 
+                           Width="90"
+                           FontFamily="Corbel"
+                           FontSize="18"
+                           Foreground="AntiqueWhite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,0,0,0"/>
+                        <TextBlock Name="SurnameTextField" 
+                           Width="150"
+                           FontFamily="Corbel"
+                           FontSize="18"
+                           Foreground="AntiqueWhite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"/>
+                        <TextBlock Text="Ukończone zadania:" 
+                           Width="155"
+                           FontFamily="Corbel"
+                           FontSize="18"
+                           Foreground="AntiqueWhite"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Margin="20,0,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+                <Button Style="{DynamicResource LogoutButton}"
+                        VerticalAlignment="Center"
+                        Foreground="AntiqueWhite"
+                        Width="90" Height="30"
+                        FontSize="15"
+                        Content="WYLOGUJ"
+                        Margin="45,0,0,0"/>
+
+            </StackPanel>
+    
+        </StackPanel>
+    </Grid>
+</Window>

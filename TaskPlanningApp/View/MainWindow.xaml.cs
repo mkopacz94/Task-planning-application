@@ -26,20 +26,15 @@ namespace TaskPlanningApp
         {
             InitializeComponent();
             DataContext = new MainWindowViewModel();
-            SetUserData();   //Test data - need for change to ViewModel
-            MinimizeAppButton.Click += (s, e) => this.WindowState = WindowState.Minimized;
+         
         }
 
-        private void SetUserData()
-        {
-            NameTextField.Text = "Mateusz";
-            SurnameTextField.Text = "Kopacz";
-        }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)  //Test drag window mode - need for change to ViewModel
         {
             if(e.LeftButton == MouseButtonState.Pressed) DragMove();
 
         }
+
     }
 }

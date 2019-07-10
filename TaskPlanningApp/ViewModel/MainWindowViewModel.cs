@@ -3,36 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace TaskPlanningApp.ViewModel
 {
     public class MainWindowViewModel
     {
-        private IClosable window;
-
-        //public RelayCommand<IClosable> CloseCommand {get; set;}
-        public RelayCommand<IClosable> CloseCommand { get; set; }
-        private static Action<IClosable> _closeWindowAction = CloseWindow;
-        private static Predicate<IClosable> _closeWindowCanExecute = CanCloseWindowExecute;
+        public RelayCommand<IClosable> CloseButton { get; set; }
+        public RelayCommand<Window> MinimizeButton { get; set; }
+        public RelayCommand<Window> MaximizeButton { get; set; }
         public MainWindowViewModel()
         {
-            //this.CloseCommand = new RelayCommand<IClosable>(this.CloseWindow);
-            this.CloseCommand = new RelayCommand<IClosable>(_closeWindowAction, _closeWindowCanExecute);
+            this.CloseButton = new RelayCommand<IClosable>(CloseCommandExecuter.ActionToExecute, CloseCommandExecuter.CanCommandExecute);
+            this.MinimizeButton = new RelayCommand<Window>(MinimizeCommandExecuter.ActionToExecute, MinimizeCommandExecuter.CanCommandExecute);
+            this.MaximizeButton = new RelayCommand<Window>(MaximizeCommandExecuter.ActionToExecute, MaximizeCommandExecuter.CanCommandExecute);
         }
 
-        private static void CloseWindow(IClosable window)
-        {
-            if (window != null)
-                window.Close();
-        }
-
-        private static bool CanCloseWindowExecute(IClosable window)
-        {
-            return window != null;
-        }
     }
 
+    public static class CloseCommandExecuter
+    {
+        public static Predicate<IClosable> CanCommandExecute = window =>
+        {
+            if (window != null) return true;
+            else throw new ArgumentNullException("Main window argument is a null argument");
+        };
+
+        public static Action<IClosable> ActionToExecute = window => window.Close();
+    }
+
+    public static class MinimizeCommandExecuter
+    {
+        public static Predicate<Window> CanCommandExecute = window => (window.WindowState != WindowState.Minimized);
+
+        public static Action<Window> ActionToExecute = window => window.WindowState = WindowState.Minimized;
+    }
+
+    public static class MaximizeCommandExecuter
+    {
+        public static Predicate<Window> CanCommandExecute = window => true;
+
+        public static Action<Window> ActionToExecute = window =>
+        {
+            if (window.WindowState != WindowState.Maximized)
+                window.WindowState = WindowState.Maximized;
+            else window.WindowState = WindowState.Normal;
+        };
+    }
     public class RelayCommand<T> : ICommand
     {
         //Properties
@@ -42,6 +60,11 @@ namespace TaskPlanningApp.ViewModel
 
         public event EventHandler CanExecuteChanged;
 
+        public RelayCommand()
+        {
+            _execute = null;
+            _canExecute = null;
+        }
         public RelayCommand(Action<T> execute) : this(execute, null)
         { }
 

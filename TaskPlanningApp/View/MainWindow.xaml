@@ -3,122 +3,245 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:TaskPlanningApp.CustomControls"
         xmlns:local="clr-namespace:TaskPlanningApp"
+        xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
         x:Name="AppMainWindow"
-        Title="MainWindow" Height="400" Width="800"
-        AllowsTransparency="True" Background="Transparent"
-        WindowStyle="None" ResizeMode="NoResize" 
+        Title="MainWindow" Height="600" Width="1000"
+        AllowsTransparency="True" Background="AliceBlue"
+        WindowStyle="None"  
+        ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
 
     </Window.Resources>
-    
-    
+
     <Grid>
-        <Border Height="80" VerticalAlignment="Top"
-                Background="#FF3B5477">
-        </Border>
-        <StackPanel>
-           
-                <Border Height="20"
-                        Background="#FFDCDCDC"
-                        MouseDown="TitleBar_MouseDown">
-                <DockPanel>
-                    <Button DockPanel.Dock="Right"
-                        Style="{DynamicResource TitleBarButton}" 
-                            Content="X"
-                            Foreground="#FF3B5477"
-                            Name="CloseAppButton"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Width="16" Height="16"
-                            Margin="0,0,3,0" FontFamily="Arial Black"
-                            Command="{Binding CloseCommand, Mode=OneWay}"
-                            CommandParameter="{Binding ElementName=AppMainWindow}">
 
-                    </Button>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
 
-                    <Button DockPanel.Dock="Right"
-                        Style="{DynamicResource TitleBarButton}" 
-                            Content="_"
-                            Foreground="#FF3B5477"
-                            Name="MinimizeAppButton"
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Center"
-                            Width="16" Height="16"
-                            Margin="0,0,3,0" FontFamily="Arial Black">
+        <!--Title Bar section-->
 
-                    </Button>
-                    
-                </DockPanel>  
-                </Border>
-                
-                
+        <Border Grid.Row="0" Grid.ColumnSpan="3"
+            MouseDown="TitleBar_MouseDown"
+            Background="{StaticResource TitleBarBrush}"/>
+
+        <DockPanel Grid.Column="2">
+            <Button DockPanel.Dock="Right"
+                Style="{DynamicResource TitleBarButton}"
+                Foreground="#FF3B5477"
+                Name="CloseAppButton"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Width="18" Height="18"
+                Margin="0,0,3,0"
+                Command="{Binding CloseButton, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=AppMainWindow}">
+                <fa:ImageAwesome Icon="Close"
+                                 Foreground="#FF3B5477"
+                                 Margin="2,2,2,2"/>
+            </Button>
             
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Vertical" Width="650">
-                    <StackPanel Height="30" Orientation="Horizontal">
-                        <TextBlock Text="Imię:" 
-                           Width="90"
-                           FontFamily="Corbel"
-                           FontSize="18"
-                           Foreground="AntiqueWhite"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="20,0,0,0"/>
-                        <TextBlock Name="NameTextField" 
-                           Width="150"
-                           FontFamily="Corbel"
-                           FontSize="18"
-                           Foreground="AntiqueWhite"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"/>
-                        <TextBlock Text="Aktywne zadania:"
-                           Width="155"
-                           FontFamily="Corbel"
-                           FontSize="18"
-                           Foreground="AntiqueWhite"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="20,0,0,0"/>
-                    </StackPanel>
-                    <StackPanel Height="30" Orientation="Horizontal">
-                        <TextBlock Text="Nazwisko:" 
-                           Width="90"
-                           FontFamily="Corbel"
-                           FontSize="18"
-                           Foreground="AntiqueWhite"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="20,0,0,0"/>
-                        <TextBlock Name="SurnameTextField" 
-                           Width="150"
-                           FontFamily="Corbel"
-                           FontSize="18"
-                           Foreground="AntiqueWhite"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"/>
-                        <TextBlock Text="Ukończone zadania:" 
-                           Width="155"
-                           FontFamily="Corbel"
-                           FontSize="18"
-                           Foreground="AntiqueWhite"
-                           VerticalAlignment="Center"
-                           HorizontalAlignment="Left"
-                           Margin="20,0,0,0"/>
-                    </StackPanel>
-                </StackPanel>
-                <Button Style="{DynamicResource LogoutButton}"
+            <Button DockPanel.Dock="Right"
+                Style="{DynamicResource TitleBarButton}"
+                Foreground="#FF3B5477"
+                Name="ZoomAppButton"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Width="18" Height="18"
+                Margin="0,0,3,0"
+                Command="{Binding MaximizeButton, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=AppMainWindow}">
+                <fa:ImageAwesome Icon="WindowMaximize"
+                                 Foreground="#FF3B5477"
+                                 Margin="2,2,2,2"/>
+            </Button>
+
+            <Button DockPanel.Dock="Right"
+                Style="{DynamicResource TitleBarButton}"    
+                Name="MinimizeAppButton"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Width="18" Height="18"
+                Margin="0,0,3,0"
+                Command="{Binding MinimizeButton, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=AppMainWindow}">
+                <fa:ImageAwesome Icon="WindowMinimize"
+                                 Foreground="#FF3B5477"
+                                 Margin="2,2,2,2"/>
+            </Button>
+
+        </DockPanel>
+        <!--User Bar section-->
+        
+        <Border Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3"
+            Background="{StaticResource UserBarBrush}"/>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1" Grid.ColumnSpan="2">
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+            Text="Imię:" 
+            Width="100"
+            FontFamily="./#Font Awesome 5 Free Solid"
+            FontSize="22"
+            Foreground="AntiqueWhite"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="20,0,0,0"/>
+
+        <TextBlock Name="NameTextField" 
+            Width="200"
+            FontFamily="Corbel"
+            FontSize="22"
+            Foreground="AntiqueWhite"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+            Text="Aktywne zadania:" 
+            Width="190"
+            FontFamily="Corbel"
+            FontSize="22"
+            Foreground="AntiqueWhite"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="20,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2" Grid.ColumnSpan="2">
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+            Text="Nazwisko:" 
+            Width="100"
+            FontFamily="Corbel"
+            FontSize="22"
+            Foreground="AntiqueWhite"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="20,0,0,0"/>
+
+            <TextBlock Name="SurnameTextField" 
+            Width="200"
+            FontFamily="Corbel"
+            FontSize="22"
+            Foreground="AntiqueWhite"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"/>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
+            Text="Ukończone zadania:" 
+            Width="190"
+            FontFamily="Corbel"
+            FontSize="22"
+            Foreground="AntiqueWhite"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="20,0,0,0"/>
+        </StackPanel>
+            
+
+        <Button Style="{DynamicResource LogoutButton}"
+                Grid.Row="1" Grid.RowSpan="2"
+                Grid.Column="3"
+                HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Foreground="AntiqueWhite"
-                        Width="90" Height="30"
-                        FontSize="15"
-                        Content="WYLOGUJ"
-                        Margin="45,0,0,0"/>
+                        Width="110" Height="40"
+                        FontSize="20"
+                        Content="WYLOGUJ"/>
+        
+        <Border Grid.Row="2" Grid.ColumnSpan="3"
+                Height="2" Background="AntiqueWhite"
+                VerticalAlignment="Bottom"/>
+        
+        <!--Tasks Panel section-->
+
+        <ScrollViewer Grid.Row="3" Grid.RowSpan="2"
+            VerticalScrollBarVisibility="Visible"
+            Background="#ff496892">
+            <StackPanel
+                        Orientation="Vertical"
+                        HorizontalAlignment="Left"
+                        Background="#ff3b5477"
+                        VerticalAlignment="Top">
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
+                <controls:TaskListControl>
+
+                </controls:TaskListControl>
 
             </StackPanel>
-    
-        </StackPanel>
+        </ScrollViewer>
+
+        <!--Tasks Management section-->
+        
+        <Border Grid.Row="5" Grid.RowSpan="2"
+            Background="{StaticResource AppBlueBrush}"/>
+        
+        <Grid Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{DynamicResource TaskManagementButtons}"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="50" Height="50">
+                <fa:ImageAwesome Icon="CalendarPlusOutline"
+                    Foreground="AntiqueWhite"
+                    Margin="7,7,7,7"/>
+            </Button>
+
+            <Button Style="{DynamicResource TaskManagementButtons}"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="50" Height="50"
+                FontSize="20">
+                <fa:ImageAwesome Icon="TrashOutline"
+                    Foreground="AntiqueWhite"
+                    Margin="7,7,7,7"/>
+            </Button>
+
+            <Button Style="{DynamicResource SortButton}"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="17"
+                Margin="10"/>
+        </Grid>
+        
     </Grid>
 </Window>

@@ -1,0 +1,69 @@
+﻿<Window x:Class="TaskPlanningApp.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskPlanningApp.View"
+        mc:Ignorable="d"
+        x:Name="AppLoginWindow"
+        Title="LoginWindow" Height="300" Width="250"
+        WindowStyle="None" ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource UserBarBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="29*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Style="{StaticResource WatermarkTextbox}"
+                 Grid.Row="1"
+                 Grid.ColumnSpan="2"
+                 Height="30" Width="200"
+                 FontFamily="Corbel"
+                 FontSize="15"
+                 Foreground="Gray"
+                 TextAlignment="Center"
+                 Focusable="False"/>
+
+        <TextBox Style="{StaticResource WatermarkPasswordbox}"
+                 Grid.Row="2"
+                 Grid.ColumnSpan="2"
+                 Height="30" Width="200"
+                 FontFamily="Corbel"
+                 FontSize="15"
+                 Foreground="Gray"
+                 Focusable="False"
+                     HorizontalContentAlignment="Center"
+                     VerticalContentAlignment="Center" BorderBrush="{x:Null}" SelectionBrush="Transparent"/>
+
+        <Button Style="{DynamicResource TextButton}"
+                Width="60" Height="20"
+                Grid.Row="4" Grid.Column="0"
+                Content="Rejestracja"
+                FontFamily="Corbel"
+                Foreground="#ff1e2d3c"
+                Margin="0,0,0,0"/>
+
+        <Button Style="{DynamicResource TextButton}"
+                Width="40" Height="20"
+                Grid.Row="4" Grid.Column="1"
+                Content="Anuluj"
+                FontFamily="Corbel"
+                Foreground="#ff1e2d3c"
+                Margin="30,0,0,0"
+                Command="{Binding CancelButton, Mode=OneWay}"
+                CommandParameter="{Binding Path=.}"/>
+
+        <Image Source="C:\Projekty C#\Aplikacja - zadania\TaskPlanningApp\TaskPlanningApp\Icons\AppIcon.png"
+               Grid.ColumnSpan="2"
+               Width="120"/>
+    </Grid>
+</Window>

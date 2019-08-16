@@ -4,85 +4,73 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using TaskPlanningApp.Model;
+using TaskPlanningApp.CustomControls;
+using TaskPlanningApp.View;
 
 namespace TaskPlanningApp.ViewModel
 {
     public class MainWindowViewModel
     {
-        public RelayCommand<IClosable> CloseButton { get; set; }
-        public RelayCommand<Window> MinimizeButton { get; set; }
-        public RelayCommand<Window> MaximizeButton { get; set; }
-        public MainWindowViewModel()
-        {
-            this.CloseButton = new RelayCommand<IClosable>(CloseCommandExecuter.ActionToExecute, CloseCommandExecuter.CanCommandExecute);
-            this.MinimizeButton = new RelayCommand<Window>(MinimizeCommandExecuter.ActionToExecute, MinimizeCommandExecuter.CanCommandExecute);
-            this.MaximizeButton = new RelayCommand<Window>(MaximizeCommandExecuter.ActionToExecute, MaximizeCommandExecuter.CanCommandExecute);
-        }
+        //Minimize, Maximize and Close buttons
 
-    }
+        public delegate void CloseMainWindow();
+        public event CloseMainWindow OnClosingEvent;
 
-    public static class CloseCommandExecuter
-    {
-        public static Predicate<IClosable> CanCommandExecute = window =>
+        private Action<MainWindowViewModel> CloseWindowAction = vm =>
         {
-            if (window != null) return true;
-            else throw new ArgumentNullException("Main window argument is a null argument");
+            vm.OnClosingEvent?.Invoke();
         };
+        private Predicate<MainWindowViewModel> CanCloseWindow = vm => true;
+        public RelayCommand<MainWindowViewModel> CloseWindow { get; set; }
 
-        public static Action<IClosable> ActionToExecute = window => window.Close();
-    }
+        private Predicate<Window> _canMinimizeExecute = window => (window.WindowState != WindowState.Minimized);
+        private Action<Window> _minimizeAction = window => window.WindowState = WindowState.Minimized;
+        public RelayCommand<Window> MinimizeButton { get; set; }
 
-    public static class MinimizeCommandExecuter
-    {
-        public static Predicate<Window> CanCommandExecute = window => (window.WindowState != WindowState.Minimized);
-
-        public static Action<Window> ActionToExecute = window => window.WindowState = WindowState.Minimized;
-    }
-
-    public static class MaximizeCommandExecuter
-    {
-        public static Predicate<Window> CanCommandExecute = window => true;
-
-        public static Action<Window> ActionToExecute = window =>
+        private Predicate<Window> _canMaximizeExecute = window => true;
+        private Action<Window> _maximizeAction = window =>
         {
             if (window.WindowState != WindowState.Maximized)
                 window.WindowState = WindowState.Maximized;
             else window.WindowState = WindowState.Normal;
         };
-    }
-    public class RelayCommand<T> : ICommand
-    {
-        //Properties
+        public RelayCommand<Window> MaximizeButton { get; set; }
 
-        private readonly Action<T> _execute;
-        private readonly Predicate<T> _canExecute;
+        //Userbar section
+        public delegate void OpenNewWindow();
+        public event OpenNewWindow MyEvent;
 
-        public event EventHandler CanExecuteChanged;
-
-        public RelayCommand()
+        private Action<MainWindowViewModel> OpenLoginWindow = vm =>
         {
-            _execute = null;
-            _canExecute = null;
-        }
-        public RelayCommand(Action<T> execute) : this(execute, null)
-        { }
+            vm.MyEvent?.Invoke();
+        };
+        private Predicate<MainWindowViewModel> CanOpenLoginWindow = vm => true;
+        public RelayCommand<MainWindowViewModel> LoginButton { get; set; }
 
-        public RelayCommand(Action<T> execute, Predicate<T> canExecute)
+        //Task panel section
+        private TaskPanelManager _tasksPanelManager = new TaskPanelManager();
+        public StackPanel TasksPanel { get; set; }
+        public RelayCommand<StackPanel> AddTaskButton { get; set; }
+        public RelayCommand<StackPanel> DeleteTaskButton { get; set; }
+
+        public User TestUser = new User("Mateusz", "Kopacz");
+
+        //Constructor
+        public MainWindowViewModel()
         {
-            this._execute = execute;
-            this._canExecute = canExecute;
+            this.MinimizeButton = new RelayCommand<Window>(_minimizeAction, _canMinimizeExecute);
+            this.MaximizeButton = new RelayCommand<Window>(_maximizeAction, _canMaximizeExecute);
+            this.CloseWindow = new RelayCommand<MainWindowViewModel>(CloseWindowAction, CanCloseWindow);
+
+            this.LoginButton = new RelayCommand<MainWindowViewModel>(OpenLoginWindow, CanOpenLoginWindow);
+
+            this.AddTaskButton = new RelayCommand<StackPanel>(_tasksPanelManager.AddNewTask, _tasksPanelManager.CanAddNewTask);
+            this.DeleteTaskButton = new RelayCommand<StackPanel>(_tasksPanelManager.DeleteLastTask, _tasksPanelManager.CanDeleteTask);
         }
 
-        public bool CanExecute(object parameter)
-        {
-            return _canExecute((T)parameter);
-        }
-
-        public void Execute(object parameter)
-        {
-            _execute((T)parameter);
-        }
-    }
+    }  
 
 }

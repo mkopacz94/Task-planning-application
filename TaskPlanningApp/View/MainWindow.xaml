@@ -20,7 +20,7 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="280"/>
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
@@ -48,13 +48,13 @@
                 VerticalAlignment="Center"
                 Width="18" Height="18"
                 Margin="0,0,3,0"
-                Command="{Binding CloseButton, Mode=OneWay}"
-                CommandParameter="{Binding ElementName=AppMainWindow}">
+                Command="{Binding CloseWindow, Mode=OneWay}"
+                CommandParameter="{Binding Path=.}">
                 <fa:ImageAwesome Icon="Close"
                                  Foreground="#FF3B5477"
                                  Margin="2,2,2,2"/>
             </Button>
-            
+
             <Button DockPanel.Dock="Right"
                 Style="{DynamicResource TitleBarButton}"
                 Foreground="#FF3B5477"
@@ -86,13 +86,13 @@
 
         </DockPanel>
         <!--User Bar section-->
-        
+
         <Border Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="3"
             Background="{StaticResource UserBarBrush}"/>
 
         <StackPanel Orientation="Horizontal"
                     Grid.Row="1" Grid.ColumnSpan="2">
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
             Text="Imię:" 
             Width="100"
             FontFamily="./#Font Awesome 5 Free Solid"
@@ -102,7 +102,7 @@
             HorizontalAlignment="Left"
             Margin="20,0,0,0"/>
 
-        <TextBlock Name="NameTextField" 
+            <TextBlock Name="NameTextField" 
             Width="200"
             FontFamily="Corbel"
             FontSize="22"
@@ -110,7 +110,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Left"/>
 
-        <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2"
             Text="Aktywne zadania:" 
             Width="190"
             FontFamily="Corbel"
@@ -141,7 +141,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Left"/>
 
-        <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
+            <TextBlock Grid.Row="2" Grid.ColumnSpan="2"
             Text="Ukończone zadania:" 
             Width="190"
             FontFamily="Corbel"
@@ -151,7 +151,7 @@
             HorizontalAlignment="Left"
             Margin="20,0,0,0"/>
         </StackPanel>
-            
+
 
         <Button Style="{DynamicResource LogoutButton}"
                 Grid.Row="1" Grid.RowSpan="2"
@@ -161,52 +161,34 @@
                         Foreground="AntiqueWhite"
                         Width="110" Height="40"
                         FontSize="20"
-                        Content="WYLOGUJ"/>
-        
+                        Content="ZALOGUJ"
+                Command="{Binding LoginButton, Mode=OneWay}"
+                CommandParameter="{Binding Path=.}"/>
+
         <Border Grid.Row="2" Grid.ColumnSpan="3"
                 Height="2" Background="AntiqueWhite"
                 VerticalAlignment="Bottom"/>
-        
+
         <!--Tasks Panel section-->
 
-        <ScrollViewer Grid.Row="3" Grid.RowSpan="2"
+        <ScrollViewer
+            Grid.Row="3" Grid.RowSpan="2"
             VerticalScrollBarVisibility="Visible"
             Background="#ff496892">
-            <StackPanel
+            <StackPanel Name="TasksStackPanel"
                         Orientation="Vertical"
                         HorizontalAlignment="Left"
                         Background="#ff3b5477"
                         VerticalAlignment="Top">
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
-                <controls:TaskListControl>
-
-                </controls:TaskListControl>
 
             </StackPanel>
         </ScrollViewer>
 
         <!--Tasks Management section-->
-        
+
         <Border Grid.Row="5" Grid.RowSpan="2"
             Background="{StaticResource AppBlueBrush}"/>
-        
+
         <Grid Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -218,7 +200,9 @@
                 Grid.Column="0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
-                Width="50" Height="50">
+                Width="50" Height="50"
+                Command="{Binding AddTaskButton, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=TasksStackPanel}">
                 <fa:ImageAwesome Icon="CalendarPlusOutline"
                     Foreground="AntiqueWhite"
                     Margin="7,7,7,7"/>
@@ -229,7 +213,9 @@
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 Width="50" Height="50"
-                FontSize="20">
+                FontSize="20"
+                Command="{Binding DeleteTaskButton, Mode=OneWay}"
+                CommandParameter="{Binding ElementName=TasksStackPanel}">
                 <fa:ImageAwesome Icon="TrashOutline"
                     Foreground="AntiqueWhite"
                     Margin="7,7,7,7"/>
@@ -241,7 +227,53 @@
                 VerticalAlignment="Center"
                 FontSize="17"
                 Margin="10"/>
+
+            <Border Grid.ColumnSpan="3"
+                    Background="AntiqueWhite"
+                    Height="2"
+                    VerticalAlignment="Top"/>
         </Grid>
-        
+
+        <!-- Pictures section -->
+        <Grid Grid.Row="4" Grid.RowSpan="2"
+              Grid.Column="1" Grid.ColumnSpan="2"
+              Background="{StaticResource UserBarBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Style="{StaticResource MovePictureButton}"
+                    Width="60" Height="60"
+                    Grid.Column="0">
+                <fa:ImageAwesome Icon="CaretLeft"
+                                 Margin="0,10,8,10"
+                                 Foreground="AntiqueWhite"/>
+            </Button>
+
+            <Button Style="{StaticResource MovePictureButton}"
+                    Width="60" Height="60"
+                    Grid.Column="4">
+                <fa:ImageAwesome Icon="CaretRight"
+                                 Margin="8,10,0,10"
+                                 Foreground="AntiqueWhite"/>
+            </Button>
+
+            <Border Background="AntiqueWhite" HorizontalAlignment="Left"
+                    Width="2"/>
+            <Border Background="AntiqueWhite" VerticalAlignment="Top"
+                    Height="2" Grid.ColumnSpan="5"/>
+
+        </Grid>
+
+        <!-- Task description section -->
+
+        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+            Background="{StaticResource AppBlueBrush}">
+            
+        </Grid>
     </Grid>
 </Window>

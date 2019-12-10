@@ -7,11 +7,6 @@ using System.Windows;
 
 namespace TaskPlanningApp
 {
-    public interface IClosable
-    {
-        void Close();
-    }
-
     class Interfaces
     {
     }

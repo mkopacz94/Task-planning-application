@@ -3,10 +3,9 @@
                     xmlns:local="clr-namespace:TaskPlanningApp.Themes"
                     xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF">
 
-
     <Style x:Key="LogoutButton" TargetType="{x:Type Button}">
 
-        <Setter Property="Background" Value="#FF568ad8"/>
+        <Setter Property="Background" Value="#FF666666"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -26,7 +25,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0:0:0.2"
                                          FillBehavior="HoldEnd"/>
                                 </Storyboard>
@@ -38,7 +37,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF568ad8"
+                                        To="#FF666666"
                                         Duration="0:0:0.2"
                                         FillBehavior="HoldEnd"/>
                                 </Storyboard>
@@ -50,7 +49,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF4f7ec4"
+                                        To="#FF888888"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -61,7 +60,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -106,7 +105,7 @@
 
     <Style x:Key="TaskManagementButtons" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Background" Value="#FF3B5477"/>
+        <Setter Property="Background" Value="#FF666666"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -129,7 +128,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0:0:0.2"
                                          FillBehavior="HoldEnd"/>
                                 </Storyboard>
@@ -141,7 +140,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF3B5477"
+                                        To="#FF666666"
                                         Duration="0:0:0.2"
                                         FillBehavior="HoldEnd"/>
                                 </Storyboard>
@@ -153,7 +152,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF3B5477"
+                                        To="#FF888888"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -164,7 +163,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -178,7 +177,7 @@
 
     <Style x:Key="SortButton" TargetType="{x:Type Button}">
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Background" Value="#FF3B5477"/>
+        <Setter Property="Background" Value="#FF666666"/>
         <Setter Property="Foreground" Value="AntiqueWhite"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="Width" Value="50"/>
@@ -211,7 +210,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0:0:0.2"
                                          FillBehavior="HoldEnd"/>
                                     <DoubleAnimation
@@ -227,7 +226,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF3B5477"
+                                        To="#FF666666"
                                         Duration="0:0:0.2"
                                         FillBehavior="HoldEnd"/>
                                     <DoubleAnimation
@@ -243,7 +242,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF3B5477"
+                                        To="#FF888888"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -254,7 +253,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -269,7 +268,7 @@
 
     <Style x:Key="MovePictureButton" TargetType="{x:Type Button}">
 
-        <Setter Property="Background" Value="#FF568ad8"/>
+        <Setter Property="Background" Value="#FF666666"/>
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -290,7 +289,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0:0:0.2"
                                          FillBehavior="HoldEnd"/>
                                 </Storyboard>
@@ -302,7 +301,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF568ad8"
+                                        To="#FF666666"
                                         Duration="0:0:0.2"
                                         FillBehavior="HoldEnd"/>
                                 </Storyboard>
@@ -314,7 +313,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF4f7ec4"
+                                        To="#FF888888"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -325,7 +324,7 @@
                                 <Storyboard>
                                     <ColorAnimation
                                         Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
-                                        To="#FF75aae0"
+                                        To="#FFb6b6b6"
                                         Duration="0"/>
                                 </Storyboard>
                             </BeginStoryboard>
@@ -346,10 +345,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-
                     <Grid>
                         <TextBlock></TextBlock>
-                        <ContentPresenter Content="{TemplateBinding Content}"/>
+                        <ContentPresenter Content="{TemplateBinding Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
@@ -360,5 +358,56 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+    <Style x:Key="FocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+    <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+    <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+    <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+    <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+    <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+    <Style x:Key="CheckedTaskButtonStyle" TargetType="{x:Type ToggleButton}">
+        <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+        <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="1"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+                    <Grid>
+                        <Ellipse Height="18" Width="18" Fill="#FF514658"
+                                 Stroke="LightGray"/>
+                        <Ellipse x:Name="InnerEllipse" Height="13" Width="13" Fill="#FF514658"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Button.IsDefaulted" Value="true">
+                            <Setter Property="Fill" TargetName="InnerEllipse" Value="#FF514658"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Fill" TargetName="InnerEllipse">
+                                <Setter.Value>
+                                    <ImageBrush ImageSource="C:\Projekty C#\Aplikacja - zadania\TaskPlanningApp\TaskPlanningApp\Icons\greenCheckMark.png"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

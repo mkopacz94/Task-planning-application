@@ -19,7 +19,7 @@ namespace TaskPlanningApp.View
     /// <summary>
     /// Logika interakcji dla klasy Window1.xaml
     /// </summary>
-    public partial class LoginWindow : Window, IClosable, IAbstractWindow
+    public partial class LoginWindow : UserControl, IAbstractWindow
     {
         public WindowInformator LoginWindowInformator { get; set; }
         private LoginViewModel loginVM = new LoginViewModel();
@@ -28,11 +28,11 @@ namespace TaskPlanningApp.View
         {
             InitializeComponent();
 
-            loginVM.ShowMainWindowEvent += () =>
-                                                {
-                                                    this.Hide();
-                                                    SendStateChangeRequest("LoginWindow", "MainWindow", WindowOperation.Show);
-                                                };
+            //loginVM.ShowMainWindowEvent += () =>
+            //                                    {
+            //                                        this.Hide();
+            //                                        SendStateChangeRequest("LoginWindow", "MainWindow", WindowOperation.Show);
+            //                                    };
         }
 
         public void SendStateChangeRequest(string from, string to, WindowOperation stateToBeSet)
@@ -42,23 +42,24 @@ namespace TaskPlanningApp.View
 
         public void ReceiveStateChangeRequest(string from, WindowOperation stateToBeSet)
         {
-            switch(stateToBeSet)
-            {
-                case WindowOperation.Hide:
-                    this.Hide();
-                    break;
+            //switch(stateToBeSet)
+            //{
+            //    case WindowOperation.Hide:
+            //        //this.Hide();
+            //        break;
 
-                case WindowOperation.Show:
-                    this.DataContext = loginVM;
-                    this.Show();  
-                    break;
-                case WindowOperation.Close:
-                    this.Close();
-                    break;
-                default:
-                    break;
-            }
+            //    case WindowOperation.Show:
+            //        //this.DataContext = loginVM;
+            //        //this.Show();  
+            //        break;
+            //    case WindowOperation.Close:
+            //       // this.Close();
+            //        break;
+            //    default:
+            //        break;
+            //}
 
         }
+
     }
 }

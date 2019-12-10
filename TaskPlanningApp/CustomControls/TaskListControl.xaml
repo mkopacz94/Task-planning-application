@@ -6,43 +6,5 @@
              xmlns:local="clr-namespace:TaskPlanningApp.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="265">
-    <Grid
-        Width="265" Height="60"
-        Background="#FF5988b9"
-        HorizontalAlignment="Left">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <TextBlock
-            Grid.Column="0"
-            Width="170"
-            Height="50"
-            Text="Nowe zadanie testowe."
-            Foreground="AntiqueWhite"
-            TextAlignment="Left"
-            FontSize="20"
-            FontFamily="Corbel"
-            TextWrapping="Wrap">
-            
-        </TextBlock>
-        <Border Grid.Column="1"
-                Background="AntiqueWhite"
-                Width="50" Height="45">
-            <TextBlock
-                Grid.Column="1"
-                Width="45"
-                Height="40"
-                Text="25 LIP"
-                Foreground="AntiqueWhite"
-                Background="#FF5988b9"
-                TextAlignment="Center"
-                FontSize="18"
-                FontFamily="Arial"
-                TextWrapping="Wrap"
-                >
-
-            </TextBlock>
-        </Border>
-    </Grid>
+    
 </UserControl>

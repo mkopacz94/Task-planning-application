@@ -1,0 +1,15 @@
+﻿<Window x:Class="TaskPlanningApp.View.TemplateDefaultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TaskPlanningApp.View"
+        xmlns:vm="clr-namespace:TaskPlanningApp.ViewModel"
+        mc:Ignorable="d"
+        Title="TemplateDefaultWindow"
+        d:DataContext="{d:DesignInstance vm:ViewModelBase}"
+        WindowStyle="None">
+    <Grid>
+        <ContentPresenter Content="{Binding ValidatesOnDataErrors=False}"/>
+    </Grid>
+</Window>

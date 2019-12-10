@@ -1,0 +1,20 @@
+﻿TaskPlanningApp
+
+
+winexe
+C#
+.cs
+C:\Projekty C#\Aplikacja - zadania\TaskPlanningApp\TaskPlanningApp\obj\Debug\
+TaskPlanningApp
+none
+false
+DEBUG;TRACE
+C:\Projekty C#\Aplikacja - zadania\TaskPlanningApp\TaskPlanningApp\App.xaml
+111742787485
+
+42-3126080
+133250063317
+Colors\AppColors.xaml;CustomControls\TaskListControl.xaml;Icons\window-minimize-solid.xaml;Themes\TextBox.xaml;View\MainWindow.xaml;Themes\Buttons.xaml;View\LoginWindow.xaml;View\RegisterWindow.xaml;View\TaskDescriptionView.xaml;View\TaskEditView.xaml;View\TemplateDefaultWindow.xaml;
+
+True
+

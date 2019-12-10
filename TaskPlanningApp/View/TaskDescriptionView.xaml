@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="TaskPlanningApp.View.TaskDescriptionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TaskPlanningApp.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="700">
+    <Grid>
+        <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"
+            Background="#d0d0d0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="{Binding CurrentTaskTitle}" Foreground="#2c203c" FontSize="25" FontFamily="Calibri Light"
+                       VerticalAlignment="Center" Margin="20,10,20,0" FontWeight="Bold"/>
+            <Rectangle Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,0" Height="1" Fill="#2c203c"/>
+            <TextBlock Grid.Row="1"
+                       Text="{Binding CurrentTaskDescription}" Foreground="#2c203c" FontSize="20" FontFamily="Calibri Light"
+                       VerticalAlignment="Center" Margin="20,10,20,20"
+                       TextWrapping="Wrap"/>
+            <Rectangle Grid.Row="1" VerticalAlignment="Bottom" Margin="40,0,40,0" Height="1" HorizontalAlignment="Stretch" Fill="#9c9c9c"/>
+            <TextBlock Grid.Row="2"
+                       Text="{Binding CurrentTaskDetails}" Foreground="#2c203c" FontSize="18" FontFamily="Calibri Light"
+                       VerticalAlignment="Top" Margin="20,20,20,0"
+                       TextWrapping="Wrap"/>
+            <Rectangle Grid.Row="3" VerticalAlignment="Bottom" Margin="40,0,40,0" Height="1" HorizontalAlignment="Stretch" Fill="#9c9c9c"/>
+        </Grid>
+    </Grid>
+</UserControl>
